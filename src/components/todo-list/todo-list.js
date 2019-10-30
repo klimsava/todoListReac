@@ -4,12 +4,14 @@ import './todo-list.css';
 
 export default class TodoList extends Component {
     render() {
-        const { todos } = this.props;
-        const elements = todos.map((item, index) => {
+        const { todos, onDeleted } = this.props;
+        const elements = todos.map((item) => {
+        const id = item.id;
             return (
-                <li key={index} className="list-group-item">
+                <li key={id} className="list-group-item">
                     <TodoListItem
                         {...item}
+                        onDeleted={() => { onDeleted(id) }}
                     />
                 </li>
             );
